@@ -15,17 +15,38 @@ body{
     font-size: 18px;
     max-width: 1400px;
 }
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: var(--gray);
+    font-weight: 700;
+}
+a:hover{
+    color: var(--very-dark-violet);
+}
 /* Navbar */
 nav{
     border: 1px red solid;
     padding: 2em 3em;
     display: flex;
+    align-items: baseline;
 }
 .logo{
     height: 30px;
 }
-ul{
-    list-style-type: none;
+.links{
+    height: 100%;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+nav ul li{
+    display: inline-block;
+    margin: 0 1em;
 }
 .authentication{
     float: right;
@@ -39,16 +60,22 @@ ul{
     font-weight: 700;
     font-size: 18px;
 }
+.cta:hover{
+    background: #AAEEEE;
+    border: 1px #AAEEEE solid;
+}
 .banner{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 240px;
+    align-items: center;        
+    height: 300px;
     color: white;
     background: var(--dark-violet);
-    background-image: url(images/bg-boost-desktop.svg);
-    background-image: linear-gradient((var(--dark-violet), (var(--dark-violet)),url(images/bg-boost-desktop.svg);
-}  
+    padding: 100px 0 0 0;
+    /* background-image: url(images/bg-boost-desktop.svg); */
+    /* background-image: linear-gradient((var(--dark-violet), (var(--dark-violet)),url(images/bg-boost-desktop.svg); */
+    /* background-repeat: no-repeat; */
+}
 /* Footer */
 footer{
     background: var(--very-dark-violet);
@@ -66,8 +93,6 @@ footer li{
 }
 footer div:last-of-type img{
     height: 20px;
-}
-footer div:last-of-type img{
     padding: 0 1em;
 }
 footer li:first-child{
@@ -88,9 +113,10 @@ footer li:first-child{
     nav{
         height: 60px;
     }
-    nav ul{
-    }
-    
+    .banner{
+        height: 250px;
+        
+    }     
     footer{
         height: 310px;
         display: flex;
