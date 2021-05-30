@@ -29,27 +29,31 @@ a:hover{
 /* Navbar */
 nav{
     border: 1px red solid;
-    padding: 2em 3em;
+}
+nav{
     display: flex;
     align-items: baseline;
+    min-height: 8vh;
+    padding: 1em 3em;
 }
 .logo{
     height: 30px;
 }
-.links{
-    height: 100%;
-    width: 1000px;
+.nav-links{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
+    width: 1000px;
 }
 nav ul li{
     display: inline-block;
     margin: 0 1em;
 }
-.authentication{
-    float: right;
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: var(--gray);
+    margin: 5px;
 }
 .cta{
     background: var(--cyan);
@@ -110,12 +114,9 @@ footer li:first-child{
 }
 /* Desktop style */
 @media (min-width: 900px){
-    nav{
-        height: 60px;
-    }
+    
     .banner{
         height: 250px;
-        
     }     
     footer{
         height: 310px;
