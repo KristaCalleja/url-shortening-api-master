@@ -82,11 +82,30 @@ nav{
     padding: .7em 2em;
     color: white;
     font-weight: 700;
-    font-size: 18px;
 }
 .cta:hover{
     background: #AAEEEE;
     border: 1px #AAEEEE solid;
+}
+/* Hero section */
+.hero-section{
+    margin: 1.5em 0;
+    height: 700px;
+}
+.hero-img{
+    height: 360px;
+    background-image: url(images/illustration-working.svg);
+    background-repeat: no-repeat;
+    background-size: 531px 357px;
+}
+.hero-title{
+    text-align: center;
+}
+.hero-title h3{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray);
+    padding: 1em;
 }
 .banner{
     display: flex;
@@ -154,6 +173,32 @@ footer li:first-child{
     }
     .nav-links-float{
         transform: translateX(150%);
+    }
+    .hero-section{
+        border: 1px red solid;
+        height: 420px;
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 2em 0;
+    }
+    .hero-title{
+        border: 1px red solid;
+        color: var(--dark-violet);
+        font-size: 24px;
+        padding: .2em;
+        order: 1;
+        text-align: left;
+        margin: 0 2em;
+    }
+    .hero-title h3{
+        padding: 0;
+        margin-bottom: 3em;
+    }
+    .hero-img{
+        background-image: url(images/illustration-working.svg);
+        background-size: 583px 418px;
+        height: 100%;
+        order: 2;
     }
     .banner{
         height: 250px;
