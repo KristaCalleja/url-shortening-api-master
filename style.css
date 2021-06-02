@@ -165,7 +165,7 @@ form{
     padding: 0 .9em;
     align-items: center;
 }
-.input::after{
+.input-url::after{
     content: '';
     display: block;
     height: 1px;
@@ -296,7 +296,7 @@ footer li:first-child{
     .card div{
         align-items: center;
     }
-    .input::after{
+    .input-url::after{
         content: none;
     }
     .banner{
