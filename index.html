@@ -49,26 +49,39 @@
       <a href="#" class="cta">Get Started</a>
     </div>
   </div>
-  <form class="form">
+  <form class="form" id="form">
     <input type="text" class="search-input" id="search-input" placeholder="Shorten a link here...">
-    <button id="btn" type="submit">Shorten It!</button>
+    <div id="prompt" style="display: none;">Please add a link!</div>
+    <button class="form-btns" id="btn" type="submit">Shorten It!</button>
   </form>
   <section>
+  <div class="results-container">
+    <div class="card">
+      <div class="input">https://www.facebook.com</div>
+      <div class="response">https://reLink.679</div>
+      <button class="form-btns">Copy!</button>
+    </div>
+    <div class="card">
+      <div class="input">https://www.frontendmentor.io</div>
+      <div class="response">https://asdf.6a5sd4f</div>
+      <button class="form-btns">Copy!</button>
+    </div>
+  </div>
     <h2>Advanced Statistics</h2>
     <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
-    <div>
-      <div-1>
+    <div class="boxes">
+      <div class="box div-1">
         Brand Recognition
         <p>Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.</p>
-      </div-1>
-      <div-2>
+      </div>
+      <div class="box div-2">
         Detailed Records
         <p>Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.</p>
-      </div-2>
-      <div-3>
+      </div>
+      <div class="box div-3">
         Fully Customisable
         <p>Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.</p>
-      </div-3>
+      </div>
     </div>
   </section>
   <div class="banner">
