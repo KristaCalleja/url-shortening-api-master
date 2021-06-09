@@ -1,24 +1,28 @@
 const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links-float');
+const navFloat = document.querySelector('.nav-links-float');
 const searchInput = document.getElementById('search-input');
-const promptElement = document.getElementById('prompt');
+const promptElement = document.querySelector('.prompt');
 const inputtedUrl = document.getElementById('url');
 const responseElement = document.getElementById('response');
 
 // Toggle mobile menu
 const navShow = () => {
     burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
+        navFloat.classList.toggle('nav-active');
     });
 }
 
 // Prompt on input focus
 const inputPrompt = () => {
-    searchInput.addEventListener('focus', (event) => {
-        promptElement.classList.toggle();
-        event.target.style.outline = 'red';
+    searchInput.addEventListener('focus', () => {
+        promptElement.classList.toggle('prompt');
+    });
+    searchInput.addEventListener('blur', (event) =>{
+        event.target.style.border = '2px green solid';
+        event.target.style.outline = 'green';
     });
 }
+
 // Call API
 const fetchShorterUrl = (url) =>{
     // GET Command
