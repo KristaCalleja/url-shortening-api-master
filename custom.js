@@ -4,6 +4,8 @@ const searchInput = document.getElementById('search-input');
 const promptElement = document.querySelector('.prompt');
 const inputtedUrl = document.getElementById('url');
 const responseElement = document.getElementById('response');
+const cardContainer = document.querySelector('.card-container');
+const newCardElement = document.createElement('div');
 
 // Toggle mobile menu
 const navShow = () => {
@@ -33,13 +35,21 @@ const fetchShorterUrl = (url) => {
     .then((data) => {
         const resultOriginal = data.result.original_link;
         const originalLink = `${resultOriginal}`;
-        console.log(originalLink);
         inputtedUrl.insertAdjacentHTML("beforeend", originalLink);
         const shortLink = data.result.short_link2;
         const shortenedLink = `${shortLink}`;
         responseElement.insertAdjacentHTML("beforeend", shortenedLink);
     });
     
+}
+
+const addNewCard = () => {
+    form.addEventListener('submit', () => {
+        event.preventDefault();
+        console.log('adding...');
+        newCardElement.setAttribute('class', 'card');
+        cardContainer.appendChild(newCardElement);
+    });
 }
 
 const updateResultList = (event) => {
@@ -51,4 +61,5 @@ form.addEventListener('submit', updateResultList);
 // Invoke all functions
 navShow();
 inputPrompt();
+addNewCard();
 fetchShorterUrl();
