@@ -126,11 +126,6 @@ form{
     border: none;
     padding: 1em 1.5em;
 }
-.search-input:focus{
-    color: var(--red);
-    outline: var(--red);
-    border: 2px var(--red) solid;
-}
 .form-btns{
     background: var(--cyan);
     border: 1px var(--cyan) solid;
@@ -144,7 +139,15 @@ form{
     background:var(--dark-violet);
     border: 1px #AAEEEE solid;
 }
+.search-input-active{
+    color: var(--red);
+    outline: var(--red);
+    border: 2px var(--red) solid;
+}
 .prompt{
+    display: none;
+}
+.prompt-active{
     display: block;
     color: var(--red);
 }
@@ -172,6 +175,9 @@ form{
     height: 1px;
     width: 100%;
     background: var(--grayish-violet);
+}
+.response{
+    color: var(--cyan);
 }
 /* Middle section */
 section{
@@ -317,6 +323,9 @@ footer li:first-child{
     }
     .form-btns{
         padding: 1em;
+    }
+    .prompt-active{
+        display: inline-block;
     }
     /* Responses */
     .card{

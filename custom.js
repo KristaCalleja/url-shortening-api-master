@@ -15,23 +15,31 @@ const navShow = () => {
 // Prompt on input focus
 const inputPrompt = () => {
     searchInput.addEventListener('focus', () => {
-        promptElement.classList.toggle('prompt');
+        promptElement.classList.toggle('prompt-active');
+        searchInput.classList.toggle('search-input-active');
     });
     searchInput.addEventListener('blur', (event) =>{
         event.target.style.border = '2px green solid';
-        event.target.style.outline = 'green';
+        event.target.style.color = 'green';
+        promptElement.classList.toggle('prompt-active');
     });
 }
 
 // Call API
-const fetchShorterUrl = (url) =>{
+const fetchShorterUrl = (url) => {
     // GET Command
     fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
     .then(response => response.json())
     .then((data) => {
-        const originalLink = data.result.code;
-        inputtedUrl.insertAdjacentHTML( 'beforeend', originalLink)
-    })
+        const resultOriginal = data.result.original_link;
+        const originalLink = `${resultOriginal}`;
+        console.log(originalLink);
+        inputtedUrl.insertAdjacentHTML("beforeend", originalLink);
+        const shortLink = data.result.short_link2;
+        const shortenedLink = `${shortLink}`;
+        responseElement.insertAdjacentHTML("beforeend", shortenedLink);
+    });
+    
 }
 
 const updateResultList = (event) => {
