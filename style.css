@@ -157,6 +157,9 @@ form{
     display: block;
     justify-content: center;
 }
+.card-container{
+    display: block;
+}
 .card{
     background-color: white;
     border-radius: 7px;

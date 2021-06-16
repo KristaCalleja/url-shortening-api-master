@@ -1,11 +1,13 @@
 const burger = document.querySelector('.burger');
 const navFloat = document.querySelector('.nav-links-float');
+const submitBtn = document.getElementById('btn');
 const searchInput = document.getElementById('search-input');
 const promptElement = document.querySelector('.prompt');
 const inputtedUrl = document.getElementById('url');
 const responseElement = document.getElementById('response');
 const cardContainer = document.querySelector('.card-container');
 const newCardElement = document.createElement('div');
+const copyButton = document.getElementById('copy-btn');
 
 // Toggle mobile menu
 const navShow = () => {
@@ -31,22 +33,21 @@ const inputPrompt = () => {
 const fetchShorterUrl = (url) => {
     // GET Command
     fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-    .then(response => response.json())
-    .then((data) => {
-        const resultOriginal = data.result.original_link;
-        const originalLink = `${resultOriginal}`;
-        inputtedUrl.insertAdjacentHTML("beforeend", originalLink);
-        const shortLink = data.result.short_link2;
-        const shortenedLink = `${shortLink}`;
-        responseElement.insertAdjacentHTML("beforeend", shortenedLink);
-    });
-    
+        .then(response => response.json())
+        .then((data) => {
+            const resultOriginal = data.result.original_link;
+            const originalLink = `${resultOriginal}`;
+            inputtedUrl.insertAdjacentHTML("beforeend", originalLink);
+            const shortLink = data.result.short_link2;
+            const shortenedLink = `${shortLink}`;
+            responseElement.insertAdjacentHTML("beforeend", shortenedLink);
+        });
 }
 
 const addNewCard = () => {
-    form.addEventListener('submit', () => {
-        event.preventDefault();
+    submitBtn.addEventListener('click', () => {
         console.log('adding...');
+        event.preventDefault();
         newCardElement.setAttribute('class', 'card');
         cardContainer.appendChild(newCardElement);
     });
@@ -54,12 +55,12 @@ const addNewCard = () => {
 
 const updateResultList = (event) => {
     event.preventDefault();
-    fetchShorterUrl(searchInput.value);
+    // fetchShorterUrl(searchInput.value);
 }
 
-form.addEventListener('submit', updateResultList);
+submitBtn.addEventListener('submit', updateResultList);
 // Invoke all functions
 navShow();
 inputPrompt();
 addNewCard();
-fetchShorterUrl();
+// fetchShorterUrl();
