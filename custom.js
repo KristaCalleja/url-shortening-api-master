@@ -3,10 +3,6 @@ const navFloat = document.querySelector('.nav-links-float');
 const submitBtn = document.getElementById('btn');
 const searchInput = document.getElementById('search-input');
 const promptElement = document.querySelector('.prompt');
-const inputtedUrl = document.getElementById('url');
-const responseElement = document.getElementById('response');
-const cardContainer = document.querySelector('.card-container');
-const newCardElement = document.createElement('div');
 const copyButton = document.getElementById('copy-btn');
 
 // Toggle mobile menu
@@ -16,6 +12,7 @@ const navShow = () => {
     });
 }
 
+navShow();
 // Prompt on input focus
 const inputPrompt = () => {
     searchInput.addEventListener('focus', () => {
@@ -28,39 +25,49 @@ const inputPrompt = () => {
         promptElement.classList.toggle('prompt-active');
     });
 }
-
-// Call API
-const fetchShorterUrl = (url) => {
-    // GET Command
-    fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-        .then(response => response.json())
-        .then((data) => {
-            const resultOriginal = data.result.original_link;
-            const originalLink = `${resultOriginal}`;
-            inputtedUrl.insertAdjacentHTML("beforeend", originalLink);
-            const shortLink = data.result.short_link2;
-            const shortenedLink = `${shortLink}`;
-            responseElement.insertAdjacentHTML("beforeend", shortenedLink);
-        });
-}
-
-const addNewCard = () => {
-    submitBtn.addEventListener('click', () => {
-        console.log('adding...');
-        event.preventDefault();
-        newCardElement.setAttribute('class', 'card');
-        cardContainer.appendChild(newCardElement);
-    });
-}
-
-const updateResultList = (event) => {
-    event.preventDefault();
-    // fetchShorterUrl(searchInput.value);
-}
-
-submitBtn.addEventListener('submit', updateResultList);
-// Invoke all functions
-navShow();
 inputPrompt();
-addNewCard();
-// fetchShorterUrl();
+
+submitBtn.addEventListener('click', () => {
+    function fetchShorterUrl(url) {
+        fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
+            .then(response => response.json())
+            .then(data => addNewCard(data))
+                const resultOriginal = data.result.original_link;
+                const originalLink = `${resultOriginal}`;
+                const shortLink = data.result.short_link2;
+                const shortenedLink = `${shortLink}`;
+                console.log(originalLink);
+                console.log(shortenedLink);
+    }
+
+        function addNewCard(data){
+            
+            for (const q of data) {
+                // Find the container where we will attach everything to
+                const cardContainer = document.querySelector('.card-container');
+            // Create all necessary elements
+            const newCard = document.createElement('div');
+            const inputUrl = document.createElement('div');
+            const responseDiv = document.createElement('div');
+            const copyBtn = document.createElement('button');
+            console.log('adding new card...');
+            
+            // Add classes and ids
+            newCard.setAttribute('class', 'card');
+            inputUrl.setAttribute('class', 'input-url');
+            responseDiv.setAttribute('class', 'response');
+            copyBtn.setAttribute('class', 'form-btns');
+            
+            // Grab data and insert into created elements
+            inputUrl.insertAdjacentHTML("beforeend", originalLink);
+            responseDiv.insertAdjacentHTML("beforeend", shortenedLink);
+
+            // Append everything to cardContainer
+            newCard.appendChild(inputUrl, responseDiv);
+            cardContainer.appendChild(newCard);
+        }
+    }
+
+// Invoke all functions
+fetchShorterUrl();
+})
