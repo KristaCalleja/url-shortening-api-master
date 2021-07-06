@@ -179,7 +179,7 @@ form{
     width: 100%;
     background: var(--grayish-violet);
 }
-.response{
+.input-url{
     color: var(--cyan);
 }
 /* Middle section */
