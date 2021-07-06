@@ -28,24 +28,24 @@ function createCardDiv(){
     inputUrl.classList.add('input-url');
     responseDiv.classList.add('response');
     copyBtn.classList.add('form-btns');
+    inputUrl.textContent = 'Loading...';
+    responseDiv.textContent = 'Loading...';
     copyBtn.innerText = 'Copy!';
     midSection.insertAdjacentElement('beforebegin', newCard);
     newCard.insertAdjacentElement('afterbegin', inputUrl);
     newCard.insertAdjacentElement('afterbegin', responseDiv);
     newCard.insertAdjacentElement('beforeend', copyBtn);
 }
-submitBtn.addEventListener('click', createCardDiv);
-
-// Add loading dummy text on submit
-function addLoadingText(){
-    inputtedUrl.textContent = 'loading...';
-    responseCode.textContent = 'loading...';
-}
-submitBtn.addEventListener('click', function(){
-    console.log('it got clicked.');
+submitBtn.addEventListener('click', function(event){
     event.preventDefault();
+    createCardDiv();
 });
 
+// Error handler
+function handleError(err){
+    console.log("Error");
+    console.log(err);
+}
 // function displayShorterUrl(url){
 //     const searchValue = document.getElementById('search-input');
 //     const searchedUrl = searchValue.value;
@@ -62,15 +62,4 @@ submitBtn.addEventListener('click', function(){
 //     inputtedUrl.textContent = `${data.ok}`;
 //     responseCode.textContent = `${data.error}`;
 // }
-
-// function handleError(err){
-//     console.log("Error");
-//     console.log(err);
-// }
-
 // displayShorterUrl("https://frontendmentor.io");
-
-
-
-
-    
