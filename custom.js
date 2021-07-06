@@ -1,73 +1,76 @@
 const burger = document.querySelector('.burger');
 const navFloat = document.querySelector('.nav-links-float');
-const submitBtn = document.getElementById('btn');
 const searchInput = document.getElementById('search-input');
 const promptElement = document.querySelector('.prompt');
-const copyButton = document.getElementById('copy-btn');
+const submitBtn = document.getElementById('btn');
 
 // Toggle mobile menu
-const navShow = () => {
-    burger.addEventListener('click', () => {
-        navFloat.classList.toggle('nav-active');
-    });
+function navShow() {
+    navFloat.classList.toggle('nav-active');
 }
+burger.addEventListener('click', navShow);
 
-navShow();
 // Prompt on input focus
-const inputPrompt = () => {
-    searchInput.addEventListener('focus', () => {
-        promptElement.classList.toggle('prompt-active');
-        searchInput.classList.toggle('search-input-active');
-    });
-    searchInput.addEventListener('blur', (event) =>{
-        event.target.style.border = '2px green solid';
-        event.target.style.color = 'green';
-        promptElement.classList.toggle('prompt-active');
-    });
+function inputPrompt() {
+    promptElement.classList.toggle('prompt-active');
+    searchInput.classList.toggle('search-input-active');
 }
-inputPrompt();
+searchInput.addEventListener('focus', inputPrompt);
 
-submitBtn.addEventListener('click', () => {
-    function fetchShorterUrl(url) {
-        fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-            .then(response => response.json())
-            .then(data => addNewCard(data))
-                const resultOriginal = data.result.original_link;
-                const originalLink = `${resultOriginal}`;
-                const shortLink = data.result.short_link2;
-                const shortenedLink = `${shortLink}`;
-                console.log(originalLink);
-                console.log(shortenedLink);
-    }
+// CreateHTML on click
+function createCardDiv(){
+    const midSection = document.querySelector('.mid-section');
+    const newCard = document.createElement('div');
+    const inputUrl = document.createElement('div');
+    const responseDiv = document.createElement('div');
+    const copyBtn = document.createElement('button');
+    newCard.classList.add('card');
+    inputUrl.classList.add('input-url');
+    responseDiv.classList.add('response');
+    copyBtn.classList.add('form-btns');
+    copyBtn.innerText = 'Copy!';
+    midSection.insertAdjacentElement('beforebegin', newCard);
+    newCard.insertAdjacentElement('afterbegin', inputUrl);
+    newCard.insertAdjacentElement('afterbegin', responseDiv);
+    newCard.insertAdjacentElement('beforeend', copyBtn);
+}
+submitBtn.addEventListener('click', createCardDiv);
 
-        function addNewCard(data){
-            
-            for (const q of data) {
-                // Find the container where we will attach everything to
-                const cardContainer = document.querySelector('.card-container');
-            // Create all necessary elements
-            const newCard = document.createElement('div');
-            const inputUrl = document.createElement('div');
-            const responseDiv = document.createElement('div');
-            const copyBtn = document.createElement('button');
-            console.log('adding new card...');
-            
-            // Add classes and ids
-            newCard.setAttribute('class', 'card');
-            inputUrl.setAttribute('class', 'input-url');
-            responseDiv.setAttribute('class', 'response');
-            copyBtn.setAttribute('class', 'form-btns');
-            
-            // Grab data and insert into created elements
-            inputUrl.insertAdjacentHTML("beforeend", originalLink);
-            responseDiv.insertAdjacentHTML("beforeend", shortenedLink);
+// Add loading dummy text on submit
+function addLoadingText(){
+    inputtedUrl.textContent = 'loading...';
+    responseCode.textContent = 'loading...';
+}
+submitBtn.addEventListener('click', function(){
+    console.log('it got clicked.');
+    event.preventDefault();
+});
 
-            // Append everything to cardContainer
-            newCard.appendChild(inputUrl, responseDiv);
-            cardContainer.appendChild(newCard);
-        }
-    }
+// function displayShorterUrl(url){
+//     const searchValue = document.getElementById('search-input');
+//     const searchedUrl = searchValue.value;
+//     console.log(searchedUrl);
+    
 
-// Invoke all functions
-fetchShorterUrl();
-})
+    
+//     const response = fetch(`https://api.shrtco.de/v2/shorten?url=${searchedUrl}`);
+//     const data = response.json();
+    
+//     console.log(data);
+//     console.log(data.ok);
+//     console.log(data.error);
+//     inputtedUrl.textContent = `${data.ok}`;
+//     responseCode.textContent = `${data.error}`;
+// }
+
+// function handleError(err){
+//     console.log("Error");
+//     console.log(err);
+// }
+
+// displayShorterUrl("https://frontendmentor.io");
+
+
+
+
+    
