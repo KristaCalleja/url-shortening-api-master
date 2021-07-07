@@ -18,6 +18,14 @@ function inputPrompt() {
 }
 searchInput.addEventListener('focus', inputPrompt);
 
+// Consume API and parse data
+function consumeAPI(){
+    const searchedUrl = searchInput.value;
+    const data = fetch(`https://api.shrtco.de/v2/shorten?url=${searchedUrl}`);
+    console.log(typeof data);
+    console.log(data.ok);
+}
+
 // CreateHTML on click
 function createCardDiv(){
     const newCard = document.createElement('div');
@@ -39,18 +47,11 @@ function createCardDiv(){
 submitBtn.addEventListener('click', function(event){
     event.preventDefault();
     createCardDiv();
-    console.log(searchInput.value);
+    consumeAPI();
 });
 
-// Consume API and parse data
 
-    // const response = fetch(`https://api.shrtco.de/v2/shorten?url=${searchedUrl}`);
-    // const data = response.json();
-    
-    // console.log(data);
-    // console.log(data.ok);
-    // console.log(data.error);
-// }
+// console.log(data.error);
 
 // Error handler
 function handleError(err){
