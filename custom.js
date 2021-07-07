@@ -31,6 +31,7 @@ function returnResponse(){
     inputUrl.classList.add('input-url');
     responseDiv.classList.add('response');
     copyBtn.classList.add('form-btns');
+    responseDiv.innerText = 'Loading...';
     inputUrl.innerText = 'Loading...';
     copyBtn.innerText = 'Copy!';
 
@@ -55,17 +56,24 @@ function returnResponse(){
             inputUrl.textContent = `${data.result.short_link}`;
         })
         .catch(handleError);
+        
+    // Nested function: Copy to clipboard
+    copyBtn.onclick = function(){
+        copyBtn.innerText = 'Copied!';
+        inputUrl.select;
+        // This method does not function on Firefox browser.
+        document.execCommand("copy");
+    };
+
 }
 submitBtn.addEventListener('click', function(event){
     event.preventDefault();
     returnResponse();
 });
 
-
-// console.log(data.error);
-
 // Error handler
 function handleError(err){
     console.log("Error");
     console.log(err);
 }
+
