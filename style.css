@@ -172,16 +172,21 @@ form{
     padding: 0 .9em;
     align-items: center;
 }
+input:nth-child(2n){
+    border: none;
+    color: var(--cyan);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+.input-url:focus{
+    outline: none;
+}
 .input-url::after{
     content: '';
     display: block;
     height: 1px;
     width: 100%;
     background: var(--grayish-violet);
-}
-.input-url{
-    color: var(--cyan);
-    user-select: all;
 }
 /* Middle section */
 section{
@@ -313,7 +318,6 @@ footer li:first-child{
         background-size: 583px 418px;
         height: 100%;
         order: 2;
-        text-align: center;
     }
     /* Form */
     form{

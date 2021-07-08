@@ -22,7 +22,7 @@ searchInput.addEventListener('focus', inputPrompt);
 // Consume API and create it dynamically on page
 function returnResponse(){
     const newCard = document.createElement('div');
-    const inputUrl = document.createElement('div');
+    const inputUrl = document.createElement('input');
     const responseDiv = document.createElement('div');
     const copyBtn = document.createElement('button');
 
@@ -32,7 +32,7 @@ function returnResponse(){
     responseDiv.classList.add('response');
     copyBtn.classList.add('form-btns');
     responseDiv.innerText = 'Loading...';
-    inputUrl.innerText = 'Loading...';
+    inputUrl.setAttribute('value', 'Loading...');
     copyBtn.innerText = 'Copy!';
 
     // Manipulate the DOM
@@ -53,14 +53,14 @@ function returnResponse(){
             console.log(data);
             console.log(data.ok);
             responseDiv.innerText = `${data.result.original_link}`;
-            inputUrl.textContent = `${data.result.short_link}`;
+            inputUrl.setAttribute('value', `${data.result.short_link}`);
         })
         .catch(handleError);
         
     // Nested function: Copy to clipboard
     copyBtn.onclick = function(){
         copyBtn.innerText = 'Copied!';
-        inputUrl.select;
+        inputUrl.select();
         // This method does not function on Firefox browser.
         document.execCommand("copy");
     };
